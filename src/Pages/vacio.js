@@ -43,45 +43,55 @@ for (optiona in options){
  let entro = 0
  let optionaw = []
      
-const dkfs = options[optiona].split("")
-const asfjner =  dkfs.map((i,index) => {
- if ((index != 0) && (i == i.toUpperCase()) &&(i != " ") && ((parseInt(i)+1)!=(parseInt(i)+1))
- && (i !="_") && (i !="-")){
-      entro = 1
-      return "xx "+i
- }else{return i}})
-          
-if (entro == 1){
-   optionaw = asfjner.join('').split(" xx ")
-}else{
-   optionaw = asfjner.join('').split(" ")
-}
-                              
- const dmamda3 = optionaw.filter( (value,index) => ((index+3) % colunma == 0))
- const dmamda1 = optionaw.filter( (value,index) => ((index+2) % colunma == 0))
- const dmamda2 = optionaw.filter( (value,index) => ((index+1) % colunma == 0))
- const dmamda = optionaw.filter( (value,index) => (index % colunma == 0))
-     
-     if (optiona < text.length) {sdsd=sdsd+"*"+text[optiona]+"*,"}
+ const dkfs = options[optiona].split("")
+ const asfjner =  dkfs.map((i,index) => {
+  if ((index != 0) && (i == i.toUpperCase()) &&(i != " ") && ((parseInt(i)+1)!=(parseInt(i)+1))
+  && (i !="_") && (i !="-") && (i !="/") && (i !="(") && (i !=")") && (i !="?") 
+   && (i !=",") && (i !="/")){
+       entro = 1
+   if (index != 0){if (dkfs[index-1] == "¿"){ return i }}
+       return "xx "+i
    
+  }else{return i}})
+           
+ if (entro == 1){
+    optionaw = asfjner.join('').split(" xx ")
+ }else{
+    optionaw = asfjner.join('').split(" ")
+ }
+   
+   if (optionaw.length % colunma == 1) {
+     
+     optionaw = optionaw[0].split(" ").concat(optionaw.filter((i,j)=>j!=0))
+   }
+   
+                               
+  const dmamda3 = optionaw.filter( (value,index) => ((index+3) % colunma == 0))
+  const dmamda1 = optionaw.filter( (value,index) => ((index+2) % colunma == 0))
+  const dmamda2 = optionaw.filter( (value,index) => ((index+1) % colunma == 0))
+  const dmamda = optionaw.filter( (value,index) => (index % colunma == 0))
+      
+      if (optiona < text.length) {sdsd=sdsd+"*"+text[optiona]+"*,"}
+    
+  
+      if (colunma == 2) {
+        djgg = djgg + "{*"+vfv[0]+"*:[*" +dmamda.join("*,*")+ "*],*"+
+                      vfv[1]+"*:[*" +dmamda2.join("*,*")+ "*]},"
+       }
+  
+       if (colunma == 3) {
+        djgg = djgg + "{*"+vfv[0]+"*:[*" +dmamda.join("*,*")+ "*],*"+
+                      vfv[1]+"*:[*" +dmamda1.join("*,*")+"*],*"+
+                      vfv[2]+"*:[*" +dmamda2.join("*,*")+ "*]},"
+       }
+       if (colunma == 4) {
+        djgg = djgg + "{*"+vfv[0]+"*:[*" +dmamda.join("*,*")+ "*],*"+
+                          vfv[1]+"*:[*" +dmamda3.join("*,*")+"*],*"+
+                          vfv[2]+"*:[*" +dmamda1.join("*,*")+"*],*"+
+                          vfv[3]+"*:[*" +dmamda2.join("*,*")+ "*]},"
+       }}
  
-     if (colunma == 2) {
-       djgg = djgg + "{*"+vfv[0]+"*:[*" +dmamda.join("*,*")+ "*],*"+
-                     vfv[1]+"*:[*" +dmamda2.join("*,*")+ "*]},"
-      }
  
-      if (colunma == 3) {
-       djgg = djgg + "{*"+vfv[0]+"*:[*" +dmamda.join("*,*")+ "*],*"+
-                     vfv[1]+"*:[*" +dmamda1.join("*,*")+"*],*"+
-                     vfv[2]+"*:[*" +dmamda2.join("*,*")+ "*]},"
-      }
-      if (colunma == 4) {
-       djgg = djgg + "{*"+vfv[0]+"*:[*" +dmamda.join("*,*")+ "*],*"+
-                         vfv[1]+"*:[*" +dmamda3.join("*,*")+"*],*"+
-                         vfv[2]+"*:[*" +dmamda1.join("*,*")+"*],*"+
-                         vfv[3]+"*:[*" +dmamda2.join("*,*")+ "*]},"
-      }}
-
-
-const coofd = "*subtitle*:*"+ capitulo +"*,*text*:["+sdsd+"],*quiz*:["+djgg+"]}"
-console.log(coofd)
+ const coofd = "*subtitle*:*"+ capitulo +"*,*text*:["+sdsd+"],*quiz*:["+djgg+"]}"
+ console.log(coofd)
+ 
