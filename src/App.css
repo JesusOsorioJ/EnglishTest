@@ -2,6 +2,22 @@
   text-align: center;
 }
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 400px;
+}
+.centertd {
+   width: 150px;
+}
+.rojotd {
+  width: 150px;
+  color:red;
+}
+.verdetd {
+  width: 150px;
+  color: blue;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

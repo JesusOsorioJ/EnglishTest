@@ -1,16 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Subtitle from './pages/Subtitle'
+import InfoTest from './pages/InfoTest';
+import Tester from './pages/Tester';
 
 function App() {
   return (
     <div className="App">
-      <Routes>
+      <Router>
+        <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/:id" element={<Subtitle />} />
+          <Route path="/subtitle/:id" element={<InfoTest />} />
+          <Route path="/test/:id" element={<Tester />} />
+          <Route path="/test/:id/:subid" element={<Tester />} />
         </Routes>
+      </Router>
     </div>
   );
 }
